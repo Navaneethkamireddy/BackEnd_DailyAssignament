@@ -1,0 +1,24 @@
+CREATE SCHEMA `student-1` ;
+
+CREATE TABLE `student-1`.`student` (
+  `student roll no` INT NULL,
+  `student name` VARCHAR(45) NULL);
+
+ALTER TABLE `student-1`.`student` 
+CHANGE COLUMN `student roll no` `student_ register_ no` VARCHAR(100) NULL DEFAULT NULL , RENAME TO  `student-1`.`student_information` ;
+
+ALTER TABLE `student-1`.`student_information` 
+ADD COLUMN `marks` INT NULL AFTER `student name`,
+ADD COLUMN `grade` VARCHAR(45) NULL AFTER `marks`;
+
+ALTER TABLE `student-1`.`student_information` 
+DROP COLUMN `grade`;
+
+ALTER TABLE `student-1`.`student_information` 
+CHANGE COLUMN `student_ register_ no` `student_ register_ no` VARCHAR(100) NOT NULL ,
+CHANGE COLUMN `student name` `student name` VARCHAR(45) NULL ,
+ADD PRIMARY KEY (`student_ register_ no`);
+;
+
+INSERT INTO `student-1`.`student_information` (`student_ register_ no`, `student name`, `marks`) VALUES ('1', 'shannu', '90');
+INSERT INTO `student-1`.`student_information` (`student_ register_ no`, `student name`, `marks`) VALUES ('2', 'srinu', '95');
